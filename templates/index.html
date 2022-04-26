@@ -15,8 +15,15 @@
             <a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a>
         </div>
         <div class="right-nav">
-            <a href="{{ url_for("index") }}" id="avatar">hecady</a>
+            <a href="{{ url_for("index") }}"><img
+                    src="https://thirdqq.qlogo.cn/g?b=sdk&k=VTdtxlgjQ2ypzlTRzUweFA&s=640&t=1630524133" id="avatar"
+                    alt="" title=""></a>
+            <a href="{{ url_for("index") }}">hecady</a>
         </div>
+    </div>
+    <div class="download">
+        <p>{{ result.data.title }}</p>
+        <a href="" id="download">点击下载</a>
     </div>
 </div>
 <div class="footer">
