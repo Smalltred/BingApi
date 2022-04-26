@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href={{ url_for("static", filename = "css/style.css") }}>
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="left-nav">
+            <a href="{{ url_for("index") }}" id="active"><h3>BingWallpaper</h3></a>
+            <a href="https://www.smmely.cn" target="_blank">我的主页</a>
+            <a href="https://docs.hecady.com" target="_blank">接口文档</a>
+            <a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a>
+        </div>
+        <div class="right-nav">
+            <a href="{{ url_for("index") }}" id="avatar">hecady</a>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <span>By</span>
+    <a href="https://www.hecady.com" target="_blank">hecady</a>
+</div>
+</body>
+</html>
