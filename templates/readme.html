@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 <head>
-<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-
-<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
 .mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
@@ -517,7 +517,7 @@ code {
     opacity: 1;
 }
 
-.md-toc { 
+.md-toc {
     margin-top:20px;
     padding-bottom:20px;
 }
@@ -585,12 +585,13 @@ header, .context-menu, .megamenu-content, footer{
 
 .menu-item-container a.menu-style-btn {
     background-color: #f5f8fa;
-    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
 }
 
 
 
-</style><title>Readme</title>
+</style><title>接口文档</title>
+        <link rel="icon" href={{ url_for("static", filename = "image/20220020280Y0ef642afd884e.png") }}>
 </head>
 <body class='typora-export os-windows typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
 <div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#bingwallpaper">BingWallpaper</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#接口">接口</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#随机">随机</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#可选">可选</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='bingwallpaper'><span>BingWallpaper</span></h1><h2 id='接口'><span>接口</span></h2><p><span>请求地址示例 ： </span><a href='https://bing.hecady.com/api/image?res=1080&amp;n=1&amp;' target='_blank' class='url'>https://bing.hecady.com/api/image?res=1080&n=1&</a></p><figure><table><thead><tr><th style='text-align:center;' ><span>参数</span></th><th style='text-align:center;' ><span>值</span></th><th style='text-align:center;' ><span>可选</span></th><th style='text-align:center;' ><span>说明</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>res</span></td><td style='text-align:center;' ><span>1080/4k</span></td><td style='text-align:center;' ><span>可选</span></td><td style='text-align:center;' ><span>返回壁纸分辨率</span></td></tr><tr><td style='text-align:center;' ><span>r</span></td><td style='text-align:center;' ><span>1随机0当天</span></td><td style='text-align:center;' ><span>可选</span></td><td style='text-align:center;' ><span>是否为随机图片</span></td></tr></tbody></table></figure><h2 id='随机'><span>随机</span></h2><p><span>随机是从往期每日一图中随机返回一张图片，可以指定分辨率</span></p><h2 id='可选'><span>可选</span></h2><p><span>不指定分辨率参数默认返回 当天1080p的图片</span></p><p><span>不指定是否随机默认不随机</span></p></div></div>
