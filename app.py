@@ -3,6 +3,8 @@
 # @Author : Small_tred 
 # @Time : 2022/4/26 21:45
 from flask import Flask, render_template, redirect, url_for, request, make_response, jsonify
+from gevent import pywsgi
+
 from v2 import handleResult, getImage, param, param4k, path1080, path4k
 
 app = Flask(__name__)
@@ -56,5 +58,6 @@ def api():
             return jsonify(result)
 
 
-if __name__ == '__main__':
-    app.run(port=80)
+server = pywsgi.WSGIServer(('0.0.0.0', 5244), app)
+server.serve_forever()
+
