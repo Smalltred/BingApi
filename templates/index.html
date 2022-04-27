@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href={{ url_for("static", filename = "css/style.css") }}>
+    <script>
+        const request = new XMLHttpRequest();
+        request.open("GET", "{{ result.data.url }}", true);
+        request.responseType = 'blob';
+        request.onload = function () {
+            const url = window.URL.createObjectURL(request.response);
+            const a = document.getElementById("download");
+            a.href = url
+            a.download = ''
+        }
+        request.send();
+    </script>
 </head>
 <body>
 <div class="main">
@@ -11,7 +23,7 @@
         <div class="left-nav">
             <a href="{{ url_for("index") }}" id="active"><h3>BingWallpaper</h3></a>
             <a href="https://www.smmely.cn" target="_blank">我的主页</a>
-            <a href="https://docs.hecady.com" target="_blank">接口文档</a>
+            <a href="{{ url_for("readme") }}" target="_blank">接口文档</a>
             <a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a>
         </div>
         <div class="right-nav">

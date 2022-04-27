@@ -3,9 +3,14 @@
 # @Author : Small_tred 
 # @Time : 2022/3/9 0:10
 import requests
+import os
+import random
 
 bing_api = "https://www.bing.com/HPImageArchive.aspx"
 url = "https://www.bing.com"
+
+path1080 = "D:\\其他\\图片\\bing- 1080 - 2016 - 2022-4-9"
+path4k = "D:\\其他\\图片\\Bing-4K"
 
 param = {
     "format": "js",
@@ -44,3 +49,11 @@ def handleResult(params):
     print(images)
     return images
 
+
+def getImage(path):
+    data = os.walk(path)
+    for dir_name, dir_list, file_list in data:
+        n = random.randrange(0, len(file_list))
+        print(file_list[n])
+        image_data = open(os.path.join(path, file_list[n]), "rb").read()
+        return image_data
