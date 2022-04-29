@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href={{ url_for("static", filename = "css/style.css") }}>
+    <title>Bing每日一图</title>
+    <link rel="stylesheet" href={{ url_for("static", filename = "css/index.css") }}>
     <link rel="icon" href={{ url_for("static", filename = "image/20220020280Y0ef642afd884e.png") }}>
     <script>
         const request = new XMLHttpRequest();
@@ -19,29 +19,31 @@
     </script>
 </head>
 <body>
-<div class="main">
-    <div class="header">
-        <div class="left-nav">
-            <a href="{{ url_for("index") }}" id="active"><h3>BingWallpaper</h3></a>
-            <a href="https://www.smmely.cn" target="_blank">我的主页</a>
-            <a href="{{ url_for("readme") }}" target="_blank">接口文档</a>
-            <a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a>
-        </div>
-        <div class="right-nav">
-            <a href="{{ url_for("index") }}"><img
-                    src="https://thirdqq.qlogo.cn/g?b=sdk&k=VTdtxlgjQ2ypzlTRzUweFA&s=640&t=1630524133" id="avatar"
-                    alt="" title=""></a>
-            <a href="{{ url_for("index") }}">hecady</a>
-        </div>
+<div class="header">
+    <div class="left-nav">
+        <ul>
+            <li><a href={{ url_for("index") }}><h3>BingWallpaper</h3></a></li>
+            <li><a href="https://www.smmely.cn" target="_blank">我的主页</a></li>
+            <li><a href={{ url_for("readme") }}>接口文档</a></li>
+            <li><a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a></li>
+        </ul>
     </div>
-    <div class="download">
-        <p>{{ result.data.title }}</p>
-        <a href="" id="download">点击下载</a>
+    <div class="right-nav">
+        <ul>
+            <li><a href="https://www.hecady.com" target="_blank">Hecady</a></li>
+            <li><img src="https://thirdqq.qlogo.cn/g?b=sdk&k=VTdtxlgjQ2ypzlTRzUweFA&s=640&t=1630524133" alt="" title="">
+            </li>
+        </ul>
     </div>
-    <div class="footer">
-        <span>By</span>
-        <a href="https://www.hecady.com" target="_blank">hecady</a>
-    </div>
+</div>
+<div class="btn">
+    <div class="title">{{ result.data.title }}</div>
+    <a href="" id="download">点击下载</a>
+</div>
+<div class="footer">
+    <span>Copyright</span>
+    <span>By</span>
+    <span><a href="https://www.hecady.com" target="_blank">hecady</a></span>
 </div>
 </body>
 </html>
