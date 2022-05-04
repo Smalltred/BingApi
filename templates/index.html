@@ -19,8 +19,8 @@
     </script>
 </head>
 <body>
-<div class="header">
-    <div class="left-nav">
+<div class="header clearfix">
+    <div class="nav">
         <ul>
             <li><a href={{ url_for("index") }}><h3>BingWallpaper</h3></a></li>
             <li><a href="https://www.smmely.cn" target="_blank">我的主页</a></li>
@@ -28,7 +28,7 @@
             <li><a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a></li>
         </ul>
     </div>
-    <div class="right-nav">
+    <div class="user">
         <ul>
             <li><a href="https://www.hecady.com" target="_blank">Hecady</a></li>
             <li><img src="https://thirdqq.qlogo.cn/g?b=sdk&k=VTdtxlgjQ2ypzlTRzUweFA&s=640&t=1630524133" alt="" title="">
@@ -36,9 +36,9 @@
         </ul>
     </div>
 </div>
-<div class="btn">
-    <div class="title">{{ result.data.title }}</div>
+<div class="btn clearfix">
     <a href="" id="download">点击下载</a>
+    <div class="title">{{ result.data.title }}</div>
 </div>
 <div class="footer">
     <span>Copyright</span>

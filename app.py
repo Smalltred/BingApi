@@ -22,42 +22,49 @@ def readme():
     return render_template("readme.html")
 
 
+@app.route("/api/4k")
+def image4k_json():
+    result = handleResult(param4k)
+    return jsonify(result)
+
+
+@app.route("/api/1080")
+def image1080_json():
+    result = handleResult(param)
+    return jsonify(result)
+
+
 @app.route("/api/image")
-def api():
-    res = request.args.get("r")
-    n = request.args.get("n")
-    if res is None and n is None:
-        result = handleResult(param)
-        return redirect(result["data"]["url"])
-    else:
-        if res == "1080" and n == "1":
-            response = make_response(getImage(path1080))
-            response.headers['Content-Type'] = 'image/png'
-            return response
-        elif res == ("4k" or "4K") and n == "1":
-            response = make_response(getImage(path4k))
-            response.headers['Content-Type'] = 'image/png'
-            return response
-        elif res == "1080" and n == "0":
-            result = handleResult(param)
-            return redirect(result["data"]["url"])
-        elif res == ("4k" or "4K") and n == "0":
-            result = handleResult(param4k)
-            return redirect(result["data"]["url"])
-        elif res == "1080" and n is None:
-            result = handleResult(param)
-            return redirect(result["data"]["url"])
-        elif res == ("4k" or "4K") and n is None:
-            result = handleResult(param4k)
-            return redirect(result["data"]["url"])
-        else:
-            result = {
-                "code": "404",
-                "msg": "请求失败"
-            }
-            return jsonify(result)
+def image_api():
+    result = handleResult(param)
+    return redirect(result["data"]["url"])
+
+
+@app.route("/api/image/1080/")
+def image_1080():
+    result = handleResult(param)
+    return redirect(result["data"]["url"])
+
+
+@app.route("/api/image/4k/")
+def image_4k():
+    result = handleResult(param4k)
+    return redirect(result["data"]["url"])
+
+
+@app.route("/api/image/1080/1")
+def imageRandom_1080():
+    response = make_response(getImage(path1080))
+    response.headers['Content-Type'] = 'image/png'
+    return response
+
+
+@app.route("/api/image/4k/1")
+def imageRandom_4k():
+    response = make_response(getImage(path4k))
+    response.headers['Content-Type'] = 'image/png'
+    return response
 
 
 server = pywsgi.WSGIServer(('0.0.0.0', 5244), app)
 server.serve_forever()
-
