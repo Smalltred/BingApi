@@ -23,14 +23,14 @@ body {
 .header .nav {
     float: left;
     height: 40px;
-    margin-left: 100px;
+    margin-left: 5%;
     line-height: 40px;
 }
 
 .header .user {
     float: right;
     height: 40px;
-    margin-right: 100px;
+    margin-right: 5%;
     line-height: 40px;
 
 }
@@ -80,12 +80,13 @@ body {
 .btn {
     position: absolute;
     top: 80%;
-    left: 60%;
+    right: 10%;
 }
 
 .btn .title {
     float: right;
     padding: 10px 20px;
+    margin: 10px;
     color: #ffffff;
     text-align: center;
     background-color: #222122;
@@ -95,7 +96,7 @@ body {
 .btn a {
     float: right;
     padding: 10px 20px;
-    margin-left: 20px;
+    margin: 10px;
     text-align: center;
     text-decoration: none;
     color: #ffffff;
