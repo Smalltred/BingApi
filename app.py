@@ -61,8 +61,7 @@ def image_4k():
 
 @app.route("/api/image/1080/1")
 def imageRandom_1080():
-    path = resolution1080.getImagePath()
-    image_data = resolution1080.getImage(path)
+    image_data = resolution1080.getImage(path1080)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
@@ -70,8 +69,7 @@ def imageRandom_1080():
 
 @app.route("/api/image/4k/1")
 def imageRandom_4k():
-    path = resolution4k.getImagePath()
-    image_data = EverydayBing.getImage(path)
+    image_data = EverydayBing.getImage(path4k)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
