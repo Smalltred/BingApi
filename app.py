@@ -4,16 +4,23 @@
 # @Time : 2022/4/26 21:45
 from flask import Flask, render_template, redirect, url_for, request, make_response, jsonify
 from gevent import pywsgi
+from v4 import EverydayBing, params4k, params1080p
 
-from v2 import handleResult, getImage, param, param4k, path1080, path4k
+files = ["1080p", "4k"]
+path1080 = "/home/每日一图/1080"
+path4k = "/home/每日一图/4k"
 
 app = Flask(__name__)
 app.debug = True
+app.config["JSON_AS_ASCII"] = False
+
+resolution4k = EverydayBing(files[0], params1080p)
+resolution1080 = EverydayBing(files[1], params4k)
 
 
 @app.route("/")
 def index():
-    result = handleResult(param)
+    result = resolution1080.requestsUrl()
     return render_template("index.html", result=result)
 
 
@@ -24,44 +31,48 @@ def readme():
 
 @app.route("/api/4k")
 def image4k_json():
-    result = handleResult(param4k)
+    result = resolution4k.requestsUrl()
     return jsonify(result)
 
 
 @app.route("/api/1080")
 def image1080_json():
-    result = handleResult(param)
+    result = resolution1080.requestsUrl()
     return jsonify(result)
 
 
 @app.route("/api/image")
 def image_api():
-    result = handleResult(param)
+    result = resolution1080.requestsUrl()
     return redirect(result["data"]["url"])
 
 
 @app.route("/api/image/1080/")
 def image_1080():
-    result = handleResult(param)
+    result = resolution1080.requestsUrl()
     return redirect(result["data"]["url"])
 
 
 @app.route("/api/image/4k/")
 def image_4k():
-    result = handleResult(param4k)
+    result = resolution4k.requestsUrl()
     return redirect(result["data"]["url"])
 
 
 @app.route("/api/image/1080/1")
 def imageRandom_1080():
-    response = make_response(getImage(path1080))
+    path = resolution1080.getImagePath()
+    image_data = resolution1080.getImage(path)
+    response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
 
 
 @app.route("/api/image/4k/1")
 def imageRandom_4k():
-    response = make_response(getImage(path4k))
+    path = resolution4k.getImagePath()
+    image_data = EverydayBing.getImage(path)
+    response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
 
