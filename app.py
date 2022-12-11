@@ -14,8 +14,8 @@ app = Flask(__name__)
 app.debug = True
 app.config["JSON_AS_ASCII"] = False
 
-resolution4k = EverydayBing(files[0], params1080p)
-resolution1080 = EverydayBing(files[1], params4k)
+resolution1080 = EverydayBing(files[0], params1080p)
+resolution4k = EverydayBing(files[1], params4k)
 
 
 @app.route("/")
