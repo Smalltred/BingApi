@@ -36,15 +36,14 @@ params1080p = {
 
 
 class EverydayBing:
-    api = "https://www.bing.com/HPImageArchive.aspx"
-    url = "https://www.bing.com"
+    api = "https://cn.bing.com/HPImageArchive.aspx"
+    url = "https://cn.bing.com"
 
     def __init__(self, path, params):
         self.path = path
         self.params = params
 
-    def requestsUrl(self):
-        response = requests.get(self.api, self.params)
+    def parse_response(self, response):
         if response.status_code == 200:
             result = response.json()["images"][0]
             image_url = self.url + result["url"]
@@ -69,6 +68,10 @@ class EverydayBing:
             }
             return errors
 
+    def requestUrl(self):
+        response = requests.get(self.api, self.params)
+        return self.parse_response(response)
+
     @staticmethod
     def getImage(path):
         data = os.walk(path)
@@ -82,3 +85,5 @@ class EverydayBing:
         curr_path = os.getcwd()
         download_path = os.path.join(curr_path, self.path)
         return download_path
+
+

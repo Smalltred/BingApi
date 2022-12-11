@@ -20,7 +20,7 @@ resolution1080 = EverydayBing(files[1], params4k)
 
 @app.route("/")
 def index():
-    result = resolution1080.requestsUrl()
+    result = resolution1080.requestUrl()
     return render_template("index.html", result=result)
 
 
@@ -31,31 +31,31 @@ def readme():
 
 @app.route("/api/4k")
 def image4k_json():
-    result = resolution4k.requestsUrl()
+    result = resolution4k.requestUrl()
     return jsonify(result)
 
 
 @app.route("/api/1080")
 def image1080_json():
-    result = resolution1080.requestsUrl()
+    result = resolution1080.requestUrl()
     return jsonify(result)
 
 
 @app.route("/api/image")
 def image_api():
-    result = resolution1080.requestsUrl()
+    result = resolution1080.requestUrl()
     return redirect(result["data"]["url"])
 
 
 @app.route("/api/image/1080/")
 def image_1080():
-    result = resolution1080.requestsUrl()
+    result = resolution1080.requestUrl()
     return redirect(result["data"]["url"])
 
 
 @app.route("/api/image/4k/")
 def image_4k():
-    result = resolution4k.requestsUrl()
+    result = resolution4k.requestUrl()
     return redirect(result["data"]["url"])
 
 
