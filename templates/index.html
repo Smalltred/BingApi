@@ -5,19 +5,8 @@
     <title>Bing每日一图</title>
     <link rel="stylesheet" href={{ url_for("static", filename = "css/index.css") }}>
     <link rel="icon" href={{ url_for("static", filename = "image/20220020280Y0ef642afd884e.png") }}>
+    <script type="text/javascript" src="{{ url_for("static", filename = "js/download.js") }}"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <script>
-        const request = new XMLHttpRequest();
-        request.open("GET", "{{ result.data.url }}", true);
-        request.responseType = 'blob';
-        request.onload = function () {
-            const url = window.URL.createObjectURL(request.response);
-            const a = document.getElementById("download");
-            a.href = url
-            a.download = ''
-        }
-        request.send();
-    </script>
 </head>
 <body>
 <div class="header clearfix">
@@ -38,8 +27,8 @@
     </div>
 </div>
 <div class="btn clearfix">
-    <a href="" id="download">点击下载</a>
-    <div class="title">{{ result.data.title }}</div>
+    <a href="javascript:void(0)" onclick="downloadImage('{{ result.data.url }}')">点击下载</a>
+    <div class="title" id="title">{{ result.data.title }}</div>
 </div>
 <div class="footer">
     <span>Copyright</span>
