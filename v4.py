@@ -7,7 +7,6 @@
 # @Blog    ：https://www.hecady.com
 import requests
 import os
-import time
 import random
 
 # 获取当前目录
@@ -36,14 +35,15 @@ params1080p = {
 
 
 class EverydayBing:
-    api = "https://cn.bing.com/HPImageArchive.aspx"
-    url = "https://cn.bing.com"
+    api = "https://www.bing.com/HPImageArchive.aspx"
+    url = "https://www.bing.com"
 
     def __init__(self, path, params):
         self.path = path
         self.params = params
 
-    def parse_response(self, response):
+    def parse_response(self):
+        response = self.requests_url(self.api, self.params)
         if response.status_code == 200:
             result = response.json()["images"][0]
             image_url = self.url + result["url"]
@@ -68,12 +68,17 @@ class EverydayBing:
             }
             return errors
 
-    def requestUrl(self):
-        response = requests.get(self.api, self.params)
-        return self.parse_response(response)
+    def image(self):
+        images_url = self.parse_response().get("data", None).get("url", None)
+        return images_url
 
     @staticmethod
-    def getImage(path):
+    def requests_url(url, params):
+        response = requests.get(url, params)
+        return response
+
+    @staticmethod
+    def get_random_image(path):
         data = os.walk(path)
         for dir_name, dir_list, file_list in data:
             n = random.randrange(0, len(file_list))
@@ -81,9 +86,13 @@ class EverydayBing:
             image_data = open(os.path.join(path, file_list[n]), "rb").read()
             return image_data
 
-    def getImagePath(self):
+    def get_path_image(self):
         curr_path = os.getcwd()
         download_path = os.path.join(curr_path, self.path)
         return download_path
 
 
+# resolution1080 = EverydayBing("", params1080p)
+# image_url = resolution1080.image()
+# image = resolution1080.requestUrl(image_url, "").content
+# print(image)

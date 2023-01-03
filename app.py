@@ -2,7 +2,7 @@
 # -- coding: utf-8 --
 # @Author : Small_tred 
 # @Time : 2022/4/26 21:45
-from flask import Flask, render_template, redirect, url_for, request, make_response, jsonify
+from flask import Flask, render_template, make_response, jsonify
 from gevent import pywsgi
 from v4 import EverydayBing, params4k, params1080p
 from flask_caching import Cache
@@ -22,7 +22,7 @@ resolution4k = EverydayBing(files[1], params4k)
 @cache.cached(timeout=43200)
 @app.route("/")
 def index():
-    result = resolution1080.requestUrl()
+    result = resolution1080.parse_response()
     return render_template("index.html", result=result)
 
 
@@ -35,41 +35,50 @@ def readme():
 @cache.cached(timeout=43200)
 @app.route("/api/4k")
 def image4k_json():
-    result = resolution4k.requestUrl()
+    result = resolution4k.parse_response()
     return jsonify(result)
 
 
 @cache.cached(timeout=43200)
 @app.route("/api/1080")
 def image1080_json():
-    result = resolution1080.requestUrl()
+    result = resolution1080.parse_response()
     return jsonify(result)
 
 
 @cache.cached(timeout=43200)
 @app.route("/api/image")
 def image_api():
-    result = resolution1080.requestUrl()
-    return redirect(result["data"]["url"])
+    image_url = resolution1080.image()
+    image = resolution1080.requests_url(image_url, "").content
+    response = make_response(image)
+    response.headers['Content-Type'] = 'image/png'
+    return response
 
 
 @cache.cached(timeout=43200)
 @app.route("/api/image/1080/")
 def image_1080():
-    result = resolution1080.requestUrl()
-    return redirect(result["data"]["url"])
+    image_url = resolution1080.image()
+    image = resolution1080.requests_url(image_url, "").content
+    response = make_response(image)
+    response.headers['Content-Type'] = 'image/png'
+    return response
 
 
 @cache.cached(timeout=43200)
 @app.route("/api/image/4k/")
 def image_4k():
-    result = resolution4k.requestUrl()
-    return redirect(result["data"]["url"])
+    image_url = resolution4k.image()
+    image = resolution4k.requests_url(image_url, "").content
+    response = make_response(image)
+    response.headers['Content-Type'] = 'image/png'
+    return response
 
 
 @app.route("/api/image/1080/1")
 def imageRandom_1080():
-    image_data = resolution1080.getImage(path1080)
+    image_data = resolution1080.get_random_image(path1080)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
@@ -77,7 +86,7 @@ def imageRandom_1080():
 
 @app.route("/api/image/4k/1")
 def imageRandom_4k():
-    image_data = EverydayBing.getImage(path4k)
+    image_data = EverydayBing.get_random_image(path4k)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
