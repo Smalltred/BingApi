@@ -36,14 +36,22 @@ def readme():
 @app.route("/api/4k")
 def image4k_json():
     result = resolution4k.parse_response()
-    return jsonify(result)
+    response = make_response(jsonify(result))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
+    return response
 
 
 @cache.cached(timeout=43200)
 @app.route("/api/1080")
 def image1080_json():
     result = resolution1080.parse_response()
-    return jsonify(result)
+    response = make_response(jsonify(result))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
+    return response
 
 
 @cache.cached(timeout=43200)
@@ -52,7 +60,9 @@ def image_api():
     image_url = resolution1080.image()
     image = resolution1080.requests_url(image_url, "").content
     response = make_response(image)
-    response.headers['Content-Type'] = 'image/png'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
     return response
 
 
@@ -63,6 +73,9 @@ def image_1080():
     image = resolution1080.requests_url(image_url, "").content
     response = make_response(image)
     response.headers['Content-Type'] = 'image/png'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
     return response
 
 
@@ -73,6 +86,9 @@ def image_4k():
     image = resolution4k.requests_url(image_url, "").content
     response = make_response(image)
     response.headers['Content-Type'] = 'image/png'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
     return response
 
 
@@ -81,6 +97,9 @@ def imageRandom_1080():
     image_data = resolution1080.get_random_image(path1080)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
     return response
 
 
@@ -89,8 +108,11 @@ def imageRandom_4k():
     image_data = EverydayBing.get_random_image(path4k)
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+    response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
     return response
 
 
-server = pywsgi.WSGIServer(('0.0.0.0', 5244), app)
+server = pywsgi.WSGIServer(('0.0.0.0', 5223), app)
 server.serve_forever()
