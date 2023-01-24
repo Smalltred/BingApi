@@ -23,7 +23,7 @@ function downloadImage(url) {
             // 设置链接的 href 属性
             link.href = url;
             // 设置链接的下载属性
-            link.download = filename;
+            link.download = filename + ".jpeg";
             // 设置链接的隐藏样式
             link.style = 'display: none';
             // 模拟点击链接
