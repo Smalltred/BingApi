@@ -57,7 +57,11 @@ def image_days_4k_json(mun):
     if mun <= 8:
         image = EverydayBing("", resolution="4k", mun=mun)
         result = image.parse_response()
-        return jsonify(result)
+        response = make_response(jsonify(result))
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+        response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
+        return response
     else:
         return {"code": "403", "msg": "超过最大天数值"}
 
@@ -80,7 +84,11 @@ def image_days_1080_json(mun):
     if mun <= 8:
         image = EverydayBing("", mun=mun)
         result = image.parse_response()
-        return jsonify(result)
+        response = make_response(jsonify(result))
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+        response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
+        return response
     else:
         return {"code": "403", "msg": "超过最大天数值"}
 

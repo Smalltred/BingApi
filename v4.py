@@ -26,7 +26,7 @@ class EverydayBing:
         self.params = {
             "cc": "zh",
             "format": "js",
-            "idx": 1,
+            "idx": 0,
             "n": mun,  # 最多八张图片
             "Hp": "hp",  # 固定参数
             "uhd": 1,  # 高清
