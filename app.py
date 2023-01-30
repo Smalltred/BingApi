@@ -28,9 +28,7 @@ def error_page(e):
 @cache.cached(timeout=43200)
 @app.route("/")
 def index():
-    image = EverydayBing("")
-    result = image.parse_response()[0]
-    return render_template("index.html", result=result)
+    return render_template("index.html")
 
 
 @cache.cached(timeout=43200)
