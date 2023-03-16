@@ -24,7 +24,7 @@ def init_db():
 @manager.command
 def drop_db():
     with app.app_context():
-        insert_data("bing", "4k")
+        insert_data("bing", "1080")
         insert_data("bing4k", "4k")
 
 
