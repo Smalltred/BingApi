@@ -356,7 +356,7 @@
 		}
 	}
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'http://127.0.0.1:5223/api/1080/8', true);
+	xhr.open('GET', '/api/1080/8', true);
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 			var data = JSON.parse(xhr.responseText);

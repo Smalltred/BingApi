@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2022/12/2 1:06
 # @Author  : Small tred
-# @FileName: v4.py
+# @FileName: service.py
 # @Software: PyCharm
 # @Blog    ：https://www.hecady.com
 import requests
@@ -34,6 +34,8 @@ class EverydayBing:
         if resolution == "4k":
             self.params["uhdwidth"] = 3840
             self.params["uhdheight"] = 2160
+        if mun > 8:
+            self.params["n"] = 8
 
     def parse_response(self):
         data = []
@@ -44,7 +46,7 @@ class EverydayBing:
             if len(result) >= 1:
                 for i in range(0, len(result)):
                     image_url = self.url + result[i]["url"]
-                    image_date = result[i]["startdate"]
+                    image_date = result[i]["enddate"]
                     image_name = result[i]["title"]
                     image_location = result[i]["copyright"]
                     temp = {
@@ -65,7 +67,7 @@ class EverydayBing:
         return errors
 
     def image(self):
-        images_url = self.parse_response().get("data", None).get("url", None)
+        images_url = self.parse_response().get("data", None)[0].get("url", None)
         return images_url
 
     @staticmethod
@@ -81,3 +83,12 @@ class EverydayBing:
         curr_path = os.getcwd()
         download_path = os.path.join(curr_path, self.path)
         return download_path
+
+
+files = ["1080p", "4k"]
+path1080 = "/home/每日一图/1080"
+path4k = "/home/每日一图/4k"
+
+resolution1080 = EverydayBing(files[0], "1080")
+resolution4k = EverydayBing(files[1], "4k")
+
