@@ -17,12 +17,15 @@ def insert_data(table, resolution):
     print(data)
     if table == "bing":
         b_type = Bing
-        db.session.add(b_type(**data))
-        db.session.commit()
+        commit_data(b_type, data)
     elif table == "bing4k":
         b_type = Bing4k
-        db.session.add(b_type(**data))
-        db.session.commit()
+        commit_data(b_type, data)
+
+
+def commit_data(b_type, data):
+    db.session.add(b_type(**data))
+    db.session.commit()
 
 
 if __name__ == '__main__':

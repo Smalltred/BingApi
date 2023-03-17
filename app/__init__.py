@@ -18,8 +18,7 @@ def create_app():
     # 初始化数据库
     db.init_app(app)
     # 注册蓝图
-    from app.routes.index import index_bp
-    from app.routes.api import api_bp
+    from app.routes import api_bp, index_bp
     app.register_blueprint(index_bp)
     app.register_blueprint(api_bp)
     return app

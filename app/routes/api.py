@@ -6,7 +6,7 @@
 # @Software: PyCharm
 # @Blog    : https://www.hecady.com
 from flask import Blueprint, jsonify, make_response, redirect
-from app.service.service import EverydayBing, resolution1080, path1080, path4k
+from app.service import EverydayBing, resolution1080, path1080, path4k
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -17,7 +17,7 @@ def error_page(e):
     return jsonify(error)
 
 
-@api_bp.route("/api/4k")
+@api_bp.route("/4k")
 def image4k_json():
     image = EverydayBing("", resolution="4k")
     result = image.parse_response()
@@ -28,7 +28,7 @@ def image4k_json():
     return response
 
 
-@api_bp.route("/api/4k/<int:mun>")
+@api_bp.route("/4k/<int:mun>")
 def image_days_4k_json(mun):
     if mun <= 8:
         image = EverydayBing("", resolution="4k", mun=mun)

@@ -5,3 +5,5 @@
 # @FileName: __init__.py.py
 # @Software: PyCharm
 # @Blog    : https://www.hecady.com
+from .db_operate import insert_data
+from .service import EverydayBing, resolution1080, path1080, path4k
