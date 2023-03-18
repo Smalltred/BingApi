@@ -14,4 +14,4 @@ def index():
 
 @index_bp.route("/docs")
 def readme():
-    return render_template("readme.html")
+    return "未开放"

@@ -8,7 +8,7 @@
 from flask import Blueprint, jsonify, make_response, redirect
 from app.service import EverydayBing, resolution1080, path1080, path4k
 
-api_bp = Blueprint('api', __name__, url_prefix='/api')
+api_bp = Blueprint('api', __name__, url_prefix='/api/v1')
 
 
 @api_bp.errorhandler(404)
