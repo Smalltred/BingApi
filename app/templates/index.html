@@ -1,381 +1,378 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-	<meta charset="UTF-8">
-	<title>Bing每日一图</title>
-	<link rel="icon" href="https://cdn-yp-cos-static.hecady.com/2023/2023001030063d7e88b451d8.png">
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			border: 0;
-		}
-		
-		body {
-			height: 100vh;
-		}
-		
-		a {
-			text-decoration: none;
-		}
-		
-		li {
-			list-style: none;
-		}
-		
-		::-webkit-scrollbar {
-			display: none;
-		}
-		
-		.navbar {
-			position: fixed;
-			top: 0;
-			right: 0;
-			left: 0;
-			z-index: 1030;
-			width: 100%;
-			background-color: rgba(34, 33, 34, 0.3);
-		}
-		
-		.container {
-			display: flex;
-			width: 90%;
-			margin: 0 auto;
-			padding: 5px 0;
-		}
-		
-		.nav {
-			display: flex;
-		}
-		
-		.navbar-left {
-			justify-content: flex-start;
-			width: 50%;
-		}
-		
-		.navbar-right {
-			justify-content: flex-end;
-			width: 50%;
-		}
-		
-		.navbar-right li img {
-			position: relative;
-			top: calc(5px / 2);
-			display: block;
-			height: 35px;
-			border-radius: 50%;
-			line-height: 35px;
-			transition: all .5s ease;
-		}
-		
-		.nav li {
-			text-align: center;
-			display: block;
-		}
-		
-		.nav li a {
-			display: block;
-			height: 40px;
-			margin-right: 20px;
-			color: white;
-			line-height: 40px;
-		}
-		
-		.nav li a:hover {
-			color: rgb(62, 172, 234);
-		}
-		
-		.nav li img:hover {
-			transform: rotate(-360deg);
-		}
-		
-		.navbar-left li:first-child a {
-			font-size: 16px;
-			font-weight: 550;
-		}
-		
-		.wrapper {
-		
-		}
-		
-		.content {
-			scroll-snap-type: y mandatory;
-			overflow-y: scroll;
-			overflow-x: hidden;
-			width: 100%;
-			height: 100vh;
-		}
-		
-		.box {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			scroll-snap-align: center;
-		}
-		
-		.box img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			vertical-align: middle;
-		}
-		
-		.box .btn-box {
-			position: absolute;
-			bottom: 2vw;
-			right: 3vw;
-			color: white;
-		}
-		
-		.btn-box a {
-			display: block;
-			width: 4vw;
-			height: 4vw;
-			text-align: center;
-			line-height: 4vw;
-			background-image: url("https://cdn-yp-cos-static.hecady.com/2023/2023001030063d69cecac560.png");
-			background-position: center center;
-			background-repeat: no-repeat;
-			background-size: 40% 40%;
-			background-color: #666666;
-			border-radius: 50%;
-		}
-		
-		.btn-box a img {
-			width: 2vw;
-			height: 2vw;
-			vertical-align: middle;
-		}
-		
-		.box .img-data {
-			display: flex;
-			justify-content: flex-start;
-			position: absolute;
-			bottom: 2vw;
-			left: 3vw;
-			font-size: 1.3vw;
-			color: white;
-		}
-		
-		.img-data .title {
-			margin-right: 10px;
-		}
-		
-		@media screen and (max-width: 992px) {
-			.navbar {
-				font-size: 5vw;
-			}
-			
-			.navbar-left li:first-child a {
-				font-size: 4vw;
-				font-weight: 550;
-			}
-			
-			.navbar .navbar-right {
-				display: none;
-			}
-			
-			.container {
-				width: 100%;
-				display: flex;
-				justify-content: flex-start;
-			}
-			
-			.navbar .navbar-left {
-				display: flex;
-				justify-content: center;
-				width: 100%;
-			}
-			
-			.nav li a {
-				margin: 10px;
-			}
-			
-			.box .btn-box {
-				bottom: 30vw;
-				right: 7vw;
-			}
-			
-			.box .btn-box a {
-				width: 16vw;
-				height: 16vw;
-			}
-			
-			.box .img-data {
-				display: block;
-				bottom: 15vw;
-				left: 3vw;
-				font-size: 32px;
-			}
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Bing每日一图</title>
+  <link rel="icon" href="https://cdn-yp-cos-static.hecady.com/2023/2023001030063d7e88b451d8.png">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          border: 0;
+      }
+
+      body {
+          height: 100vh;
+      }
+
+      a {
+          text-decoration: none;
+      }
+
+      li {
+          list-style: none;
+      }
+
+      ::-webkit-scrollbar {
+          display: none;
+      }
+
+      .navbar {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+          width: 100%;
+          background-color: rgba(34, 33, 34, 0.3);
+      }
+
+      .container {
+          display: flex;
+          width: 90%;
+          margin: 0 auto;
+          padding: 5px 0;
+      }
+
+      .nav {
+          display: flex;
+      }
+
+      .navbar-left {
+          justify-content: flex-start;
+          width: 50%;
+      }
+
+      .navbar-right {
+          justify-content: flex-end;
+          width: 50%;
+      }
+
+      .navbar-right li img {
+          position: relative;
+          top: calc(5px / 2);
+          display: block;
+          height: 35px;
+          border-radius: 50%;
+          line-height: 35px;
+          transition: all .5s ease;
+      }
+
+      .nav li {
+          text-align: center;
+          display: block;
+      }
+
+      .nav li a {
+          display: block;
+          height: 40px;
+          margin-right: 20px;
+          color: white;
+          line-height: 40px;
+      }
+
+      .nav li a:hover {
+          color: rgb(62, 172, 234);
+      }
+
+      .nav li img:hover {
+          transform: rotate(-360deg);
+      }
+
+      .navbar-left li:first-child a {
+          font-size: 16px;
+          font-weight: 550;
+      }
+
+      .wrapper {
+
+      }
+
+      .content {
+          scroll-snap-type: y mandatory;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          width: 100%;
+          height: 100vh;
+      }
+
+      .box {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          scroll-snap-align: center;
+      }
+
+      .box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          vertical-align: middle;
+      }
+
+      .box .btn-box {
+          position: absolute;
+          bottom: 2vw;
+          right: 3vw;
+          color: white;
+      }
+
+      .btn-box a {
+          display: block;
+          width: 4vw;
+          height: 4vw;
+          text-align: center;
+          line-height: 4vw;
+          background-image: url("https://cdn-yp-cos-static.hecady.com/2023/2023001030063d69cecac560.png");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 40% 40%;
+          background-color: #666666;
+          border-radius: 50%;
+      }
+
+      .btn-box a img {
+          width: 2vw;
+          height: 2vw;
+          vertical-align: middle;
+      }
+
+      .box .img-data {
+          display: flex;
+          justify-content: flex-start;
+          position: absolute;
+          bottom: 2vw;
+          left: 3vw;
+          font-size: 1.3vw;
+          color: white;
+      }
+
+      .img-data .title {
+          margin-right: 10px;
+      }
+
+      @media screen and (max-width: 992px) {
+          .navbar {
+              font-size: 5vw;
+          }
+
+          .navbar-left li:first-child a {
+              font-size: 4vw;
+              font-weight: 550;
+          }
+
+          .navbar .navbar-right {
+              display: none;
+          }
+
+          .container {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+          }
+
+          .navbar .navbar-left {
+              display: flex;
+              justify-content: center;
+              width: 100%;
+          }
+
+          .nav li a {
+              margin: 10px;
+          }
+
+          .box .btn-box {
+              bottom: 30vw;
+              right: 7vw;
+          }
+
+          .box .btn-box a {
+              width: 16vw;
+              height: 16vw;
+          }
+
+          .box .img-data {
+              display: block;
+              bottom: 15vw;
+              left: 3vw;
+              font-size: 32px;
+          }
+      }
+  </style>
 </head>
 <body>
 <div class="navbar">
-	<div class="container">
-		<ul class="nav navbar-left">
-			<li><a href="">BingWallpaper</a></li>
-			<li><a href="https://i.hecady.com" target="_blank">我的主页</a></li>
-			<li><a href="/docs" target="_blank">接口文档</a></li>
-			<li><a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a></li>
-		</ul>
-		<ul class="nav navbar-right">
-			<li><a href="https://www.hecady.com" target="_blank">Hecady</a></li>
-			<li><img src="https://thirdqq.qlogo.cn/g?b=sdk&amp;k=VTdtxlgjQ2ypzlTRzUweFA&amp;s=640&amp;t=1630524133" alt="" title="">
-			</li>
-		</ul>
-	</div>
+  <div class="container">
+	<ul class="nav navbar-left">
+	  <li><a href="">BingWallpaper</a></li>
+	  <li><a href="https://i.hecady.com" target="_blank">我的主页</a></li>
+	  <li><a href="/docs" target="_blank">接口文档</a></li>
+	  <li><a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a></li>
+	</ul>
+	<ul class="nav navbar-right">
+	  <li><a href="https://www.hecady.com" target="_blank">Hecady</a></li>
+	  <li>
+		<img src="https://thirdqq.qlogo.cn/g?b=sdk&amp;k=VTdtxlgjQ2ypzlTRzUweFA&amp;s=640&amp;t=1630524133" alt="" title="">
+	  </li>
+	</ul>
+  </div>
 </div>
 <div class="wrapper">
-	<div class="content">
-		<div class="box">
-			<img src="" alt="1">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()"></a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="2">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="3">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="4">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="5">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="6">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="7">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
-		<div class="box">
-			<img src="" alt="8">
-			<div class="btn-box">
-				<a href="###" onclick="downloadImage()">
-				</a>
-			</div>
-			<div class="img-data">
-				<div class="title"></div>
-				<div class="time"></div>
-			</div>
-		</div>
+  <div class="content">
+	<div class="box">
+	  <img src="" alt="1">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"></a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
 	</div>
-</div>
+	<div class="box">
+	  <img src="" alt="2">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="3">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="4">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="5">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="6">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="7">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+	<div class="box">
+	  <img src="" alt="8">
+	  <div class="btn-box">
+		<a href="javascript:void(0);"> </a>
+	  </div>
+	  <div class="img-data">
+		<div class="title"></div>
+		<div class="time"></div>
+	  </div>
+	</div>
+  </div>
 </div>
 <script>
-	function downloadImage() {
-		let targetLink = event.target;
-		let parentBox = targetLink.parentNode.parentNode;
-		let image = parentBox.querySelector("img");
-		let url = image.src;
-		var filename = "123";
-		// 创建一个 XMLHttpRequest 对象
-		var xhr = new XMLHttpRequest();
-		// 设置请求的方法、URL 以及是否异步处理请求
-		xhr.open('GET', url, true);
-		// 设置响应类型为二进制数据
-		xhr.responseType = 'blob';
-		// 发送请求
-		xhr.send();
-		
-		// 监听请求状态的变化
-		xhr.onreadystatechange = function () {
-			// 如果请求完成且响应就绪
-			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-				// 获取响应的二进制数据
-				var blob = xhr.response;
-				// 创建一个新的 URL 对象
-				var url = URL.createObjectURL(blob);
-				// 创建一个链接元素
-				var link = document.createElement('a');
-				// 设置链接的 href 属性
-				link.href = url;
-				// 设置链接的下载属性
-				link.download = "123" + ".jpg";
-				// 设置链接的隐藏样式
-				link.style = 'display: none';
-				// 模拟点击链接
-				link.click();
-			}
-		}
-	}
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', '/api/v1/1080/8', true);
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-			var data = JSON.parse(xhr.responseText);
-			let boxes = document.querySelectorAll(".box");
-			for (let i = 0; i < boxes.length; i++) {
-				let box = boxes[i];
-				let img = box.querySelector("img");
-				let title = box.querySelector(".title");
-				let time = box.querySelector(".time");
-				
-				img.src = data.data[i].url;
-                img.alt = data.data[i].location
-				title.innerHTML = data.data[i].location;
-				time.innerHTML = data.data[i].date;
-			}
-		}
-	};
-	xhr.send();
+    (function downloadImage() {
+        let box = document.querySelectorAll('.box');
+        for (let i = 0; i < box.length; i++) {
+            let a = box[i].querySelector('a');
+            a.addEventListener('click', function () {
+                let title = box[i].querySelector('.title');
+                let img = box[i].querySelector('img');
+                let url = img.src;
+                // 创建一个 XMLHttpRequest 对象
+                let xhr = new XMLHttpRequest();
+                // 设置请求的方法、URL 以及是否异步处理请求
+                xhr.open('GET', url, true);
+                // 设置响应类型为二进制数据
+                xhr.responseType = 'blob';
+                // 发送请求
+                xhr.send();
 
+                // 监听请求状态的变化
+                xhr.onreadystatechange = function () {
+                    // 如果请求完成且响应就绪
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        // 获取响应的二进制数据
+                        let blob = xhr.response;
+                        // 创建一个新的 URL 对象
+                        let url = URL.createObjectURL(blob);
+                        // 创建一个链接元素
+                        let link = document.createElement('a');
+                        // 设置链接的 href 属性
+                        link.href = url;
+                        // 设置链接的下载属性
+                        link.download = `${title.innerText}.jpg`;
+                        // 设置链接的隐藏样式
+                        link.style.display = 'none';
+                        // 模拟点击链接
+                        link.click();
+                    }
+                }
+            });
+        }
+    }());
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/v1/1080/8', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            let data = JSON.parse(xhr.responseText);
+            let boxes = document.querySelectorAll(".box");
+            for (let i = 0; i < boxes.length; i++) {
+                let box = boxes[i];
+                let img = box.querySelector("img");
+                let title = box.querySelector(".title");
+                let time = box.querySelector(".time");
+
+                img.src = data.data[i].url;
+                img.alt = data.data[i].location;
+                title.innerHTML = data.data[i].location;
+                time.innerHTML = data.data[i].date;
+            }
+        }
+    };
+    xhr.send();
 </script>
 </body>
 </html>
