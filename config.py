@@ -8,7 +8,7 @@
 
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:1842244757@127.0.0.1:3306/bing?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:12345678@127.0.0.1:3306/bing?charset=utf8'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_SIZE = 5
     SQLALCHEMY_POOL_TIMEOUT = 10
