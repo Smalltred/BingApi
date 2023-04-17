@@ -216,7 +216,7 @@
 	<ul class="nav navbar-left">
 	  <li><a href="">BingWallpaper</a></li>
 	  <li><a href="https://i.hecady.com" target="_blank">我的主页</a></li>
-	  <li><a href="/docs" target="_blank">接口文档</a></li>
+	  <li><a href="docs.html" target="_blank">接口文档</a></li>
 	  <li><a href="https://github.com/Smalltred/BingWallpaper" target="_blank">开源地址</a></li>
 	</ul>
 	<ul class="nav navbar-right">
@@ -354,7 +354,7 @@
     }());
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/api/v1/1080/8', true);
+    xhr.open('GET', 'https://api.hecady.com/service/v1/bing/1080/8', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             let data = JSON.parse(xhr.responseText);

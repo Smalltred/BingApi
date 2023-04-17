@@ -8,7 +8,7 @@
 from flask import Blueprint, jsonify, make_response, redirect
 from app.service import EverydayBing, resolution1080, path1080, path4k
 
-api_bp = Blueprint('api', __name__, url_prefix='/api/v1')
+api_bp = Blueprint('api', __name__)
 
 
 @api_bp.errorhandler(404)
@@ -42,7 +42,7 @@ def image_days_4k_json(mun):
         return {"code": "403", "msg": "超过最大天数值"}
 
 
-@api_bp.route("/1080/")
+@api_bp.route("/1080")
 def image1080_json():
     image = EverydayBing("")
     result = image.parse_response()

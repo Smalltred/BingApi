@@ -5,5 +5,4 @@
 # @FileName: __init__.py.py
 # @Software: PyCharm
 # @Blog    : https://www.hecady.com
-from app.routes.index import index_bp
 from app.routes.api import api_bp
